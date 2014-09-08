@@ -75,6 +75,18 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
+    rspec (3.1.0)
+      rspec-core (~> 3.1.0)
+      rspec-expectations (~> 3.1.0)
+      rspec-mocks (~> 3.1.0)
+    rspec-core (3.1.1)
+      rspec-support (~> 3.1.0)
+    rspec-expectations (3.1.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.1.0)
+    rspec-mocks (3.1.0)
+      rspec-support (~> 3.1.0)
+    rspec-support (3.1.0)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -95,4 +107,5 @@ DEPENDENCIES
   cucumber-sinatra
   data_mapper
   dm-postgres-adapter
+  rspec
   sinatra
