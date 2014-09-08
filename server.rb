@@ -11,9 +11,17 @@ DataMapper.auto_upgrade!
 
 class BookmarkManager < Sinatra::Base
 
-get '/' do
-  erb :index.rb
-end
+  get '/' do
+	  @links = Link.all
+    erb :index
+  end
 
+  post '/links' do
+    url         = params["url"]
+    title       = params["title"]
+    description = params["description"]
+    Link.create(:url => url, :title => title, :description => description)
+    redirect to ('/')
+  end
   # start the server if ruby file executed directly
 end
