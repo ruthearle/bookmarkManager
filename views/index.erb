@@ -4,6 +4,9 @@ Current links:
 <ul>
   <% @links.each do |link| %>
     <li><a href="<%= link.url%>"><%= link.title %></a></li>
+    <% link.tags.each do |tag| %>
+      <%= tag.text %>
+    <% end %>
   <% end%>
 </ul>
 
@@ -12,6 +15,7 @@ Current links:
     Url: <input type="text" name="url">
     Title: <input type="text" name="title">
     Description: <input type="text" name="description">
+    Tag: <input type="text" name="tags">
     <input type="submit" value="Add link">
   </form>
 </div>
