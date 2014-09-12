@@ -5,7 +5,7 @@ class Tag
 
   property :id, Serial
   property :text, String
-  
+
   has n, :links, :through => Resource
 
 end
