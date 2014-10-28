@@ -7,8 +7,6 @@ This week's project is a bookmark manager. The goal is to learn about integratio
 
 A user can sign up for a new account, log in or out, and add new links. The website is able to show links from the database and filter links by tags.
 
-The final app can be viewed here: http://ch2ch3-bookmark-manager.herokuapp.com
-
 Technologies used:
 - Ruby
 - Sinatra
