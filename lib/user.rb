@@ -18,7 +18,7 @@ class User
 
   validates_confirmation_of :password, :message => "Sorry, your passwords don't match"
   #validates_uniqueness_of :email  #This line is not necessary because we have
-  #called for uniqueness on the email porperty. However, some ORM's require
+  #called for uniqueness on the email property. However, some ORM's require
   #this line, so check.
 
   # when the password is assigned it will not be stored directly

@@ -31,7 +31,10 @@ class BookmarkManager < Sinatra::Base
 
     # ['education, ruby']
 
-    Link.create(:url => url, :title => title, :description => description, tags: tags)
+    Link.create(:url         => url,
+                :title       => title,
+                :description => description,
+                :tags        => tags)
     redirect to ('/')
   end
 
@@ -47,8 +50,8 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/users' do
-    @user = User.create(:email => params[:email],
-                       :password => params[:password],
+    @user = User.create(:email                => params[:email],
+                       :password              => params[:password],
                        :password_confirmation => params[:password_confirmation])
     if @user.save
       session[:user_id] = @user.id
