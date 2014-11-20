@@ -66,7 +66,7 @@ feature "User signs out" do
 
 end
 
-feature "Person forgets their email" do
+feature "Person forgets their password" do
 
   before(:each) do
     User.create(:email                 => "test@test.com",
@@ -74,10 +74,20 @@ feature "Person forgets their email" do
                 :password_confirmation => "test")
   end
 
-  scenario "they can request a link to reset their password" do
+  scenario "and requests to resest it using a correct email address" do
     visit 'users/forgot_password'
     fill_in 'email', :with => "test@test.com"
     click_on 'Forgot my password'
     expect(page).to have_content('Please check your email')
   end
+
+  scenario "and requests to resest it using an incorrect email address" do
+    visit 'users/forgot_password'
+    fill_in 'email', :with => "pass@test.com"
+    click_on 'Forgot my password'
+    expect(page).not_to have_content('Please check your email')
+    expect(page).to have_content('Incorrect email. Please re-enter your email address.')
+    expect(current_path).to eq('users/forgot_password')
+  end
+
 end
