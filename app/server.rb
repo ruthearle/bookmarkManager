@@ -1,21 +1,25 @@
 require 'sinatra/base'
 require 'data_mapper'
 require 'rack-flash'
+require 'sinatra/partial'
 
-require './lib/link'
-require './lib/tag'
-require './lib/user'
+require_relative 'models/link'
+require_relative 'models/tag'
+require_relative 'models/user'
 
 require_relative 'data_mapper_setup'
 require_relative 'helpers/application'
 
 class BookmarkManager < Sinatra::Base
+  register Sinatra::Partial
 
   include Helpers
 
   enable :sessions
   set :session_secret, 'super secret'
   use Rack::Flash
+  use Rack::MethodOverride
+  set :partial_template_engine, :erb
 
   get '/' do
 	  @links = Link.all
@@ -23,7 +27,6 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/links' do
-    # raise params.inspect
     url         = params["url"]
     title       = params["title"]
     description = params["description"]
@@ -76,6 +79,12 @@ class BookmarkManager < Sinatra::Base
       flash[:errors] = ["The email or password is incorrect"]
       erb :"sessions/new"
     end
+  end
+
+  delete '/sessions' do
+    flash[:notice] = "Good bye!"
+    session[:user_id] = nil
+    redirect to('/')
   end
  # start the server if ruby file executed directly
 end
