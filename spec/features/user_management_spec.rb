@@ -65,3 +65,19 @@ feature "User signs out" do
   end
 
 end
+
+feature "Person forgets their email" do
+
+  before(:each) do
+    User.create(:email                 => "test@test.com",
+                :password              => "test",
+                :password_confirmation => "test")
+  end
+
+  scenario "they can request a link to reset their password" do
+    visit 'users/forgot_password'
+    fill_in 'email', :with => "test@test.com"
+    click_on 'Forgot my password'
+    expect(page).to have_content('Please check your email')
+  end
+end

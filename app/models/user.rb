@@ -11,10 +11,11 @@ class User
   # 50 characters by default
   # and it's not enough for the hash and salt
   property :password_digest, Text
+  property :password_token, Text
+  property :password_token_timestamp, DateTime
 
   attr_reader :password
   attr_writer :password_confirmation
-
 
   validates_confirmation_of :password, :message => "Sorry, your passwords don't match"
   #validates_uniqueness_of :email  #This line is not necessary because we have
