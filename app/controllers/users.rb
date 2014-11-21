@@ -23,28 +23,39 @@ end
 post '/users/forgot_password' do
   user = User.first(email: params[:email])
   if user.class == User
-    user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
+    user.password_token           = (1..64).map{('A'..'Z').to_a.sample}.join
     user.password_token_timestamp = Time.now
     user.save
     flash[:notice] = "Please check your email"
     redirect('/')
   else
-    flash[:notice] = "Incorrect email address!"
+    flash[:errors] = ["Incorrect email address!"]
     redirect('/users/forgot_password')
   end
 end
 
 get '/users/reset_password/:token' do
   @user = User.first(password_token: params[:token])
-  erb :'/users/new_password'
+  if (Time.now  - @user.password_token_timestamp) > 3600
+    flash[:errors] = ["This link has expired."]
+    redirect '/users/forgot_password'
+  else
+    erb :'/users/new_password'
+  end
 end
 
 post '/users/new_password' do
-  user                       = User.first(password_token: params[:token])
-  user.password              = params[:password]
-  user.password_confirmation = params[:password_confirmation]
-  user.save
-  flash[:notice] = 'Your password has been reset.'
-  redirect('/sessions/new')
+  user = User.first(password_token: params[:token])
+  if (Time.now  - user.password_token_timestamp) < 3600
+    user.update(password: params[:password],
+                password_confirmation: params[:password_confirmation],
+                password_token: nil,
+                password_token_timestamp: nil)
+    flash[:notice] = 'Your password has been reset.'
+    redirect('/sessions/new')
+  else
+    flash[:errors] = ["This link has expired."]
+    redirect '/users/forgot_password'
+  end
 end
 

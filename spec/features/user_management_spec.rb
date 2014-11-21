@@ -88,11 +88,11 @@ feature "Person forgets their password" do
     fill_in 'email', :with => "pass@test.com"
     click_on 'Forgot my password'
     expect(page).not_to have_content('Please check your email')
-    expect(page).to have_content('Incorrect email address! Please tell us your email address')
+    expect(page).to have_content('Incorrect email address!')
     expect(current_path).to eq('/users/forgot_password')
   end
 
-  scenario "and resets it using the password token link" do
+  scenario "and resets it using a valid password token link" do
     visit 'users/reset_password/RAdoM'
     expect(page).to have_content('Please enter a new password for test@test.com')
     fill_in 'password', with: "test"
@@ -100,4 +100,22 @@ feature "Person forgets their password" do
     click_on 'Reset my password'
     expect(page).to have_content 'Your password has been reset. Please sign in'
   end
+
+   before(:each) do
+    User.create(:email                    => "test@test.com",
+                :password                 => "test",
+                :password_confirmation    => "test",
+                :password_token           => "RAdoM",
+                :password_token_timestamp => Time.new(2400))
+  end
+
+
+  scenario "and cannot reset with an expired password token link" do
+    visit 'users/reset_password/RAdoM'
+    expect(page).to have_content('Sorry, there were the following problems with the form: This link has expired.')
+    expect(current_path).to eq ('/users/forgot_password')
+  end
 end
+
+#scenario password_confirmation incorrect
+#scenario send email with token
