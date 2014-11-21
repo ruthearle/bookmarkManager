@@ -89,5 +89,4 @@ feature "Person forgets their password" do
     expect(page).to have_content('Incorrect email address! Please tell us your email address')
     expect(current_path).to eq('/users/forgot_password')
   end
-
 end
