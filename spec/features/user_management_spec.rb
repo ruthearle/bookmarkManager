@@ -96,7 +96,8 @@ feature "Person forgets their password" do
     visit 'users/reset_password/RAdoM'
     expect(page).to have_content('Please enter a new password for test@test.com')
     fill_in 'password', with: "test"
+    fill_in 'password_confirmation', with: 'test'
     click_on 'Reset my password'
-    expect(page).to have_content 'Your password has been reset. Please Sign in'
+    expect(page).to have_content 'Your password has been reset. Please sign in'
   end
 end

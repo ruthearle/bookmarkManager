@@ -34,3 +34,17 @@ post '/users/forgot_password' do
   end
 end
 
+get '/users/reset_password/:token' do
+  @user = User.first(password_token: params[:token])
+  erb :'/users/new_password'
+end
+
+post '/users/new_password' do
+  user                       = User.first(password_token: params[:token])
+  user.password              = params[:password]
+  user.password_confirmation = params[:password_confirmation]
+  user.save
+  flash[:notice] = 'Your password has been reset.'
+  redirect('/sessions/new')
+end
+
