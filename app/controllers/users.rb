@@ -33,3 +33,4 @@ post '/users/forgot_password' do
     redirect('/users/forgot_password')
   end
 end
+

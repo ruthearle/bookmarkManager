@@ -69,9 +69,11 @@ end
 feature "Person forgets their password" do
 
   before(:each) do
-    User.create(:email                 => "test@test.com",
-                :password              => "test",
-                :password_confirmation => "test")
+    User.create(:email                    => "test@test.com",
+                :password                 => "test",
+                :password_confirmation    => "test",
+                :password_token           => "RAdoM",
+                :password_token_timestamp => Time.now)
   end
 
   scenario "and requests to resest it using a correct email address" do
@@ -88,5 +90,13 @@ feature "Person forgets their password" do
     expect(page).not_to have_content('Please check your email')
     expect(page).to have_content('Incorrect email address! Please tell us your email address')
     expect(current_path).to eq('/users/forgot_password')
+  end
+
+  scenario "and resets it using the password token link" do
+    visit 'users/reset_password/RAdoM'
+    expect(page).to have_content('Please enter a new password for test@test.com')
+    fill_in 'password', with: "test"
+    click_on 'Reset my password'
+    expect(page).to have_content 'Your password has been reset. Please Sign in'
   end
 end
