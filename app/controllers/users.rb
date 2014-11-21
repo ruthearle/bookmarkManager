@@ -20,11 +20,16 @@ get '/users/forgot_password' do
   erb :'users/forgot_password'
 end
 
-post '/users/reset_password' do
+post '/users/forgot_password' do
   user = User.first(email: params[:email])
-  user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
-  user.password_token_timestamp = Time.now
-  user.save
-  flash[:notice] = "Please check your email"
-  redirect('/')
+  if user.class == User
+    user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
+    user.password_token_timestamp = Time.now
+    user.save
+    flash[:notice] = "Please check your email"
+    redirect('/')
+  else
+    flash[:notice] = "Incorrect email address!"
+    redirect('/users/forgot_password')
+  end
 end

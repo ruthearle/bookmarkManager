@@ -86,8 +86,8 @@ feature "Person forgets their password" do
     fill_in 'email', :with => "pass@test.com"
     click_on 'Forgot my password'
     expect(page).not_to have_content('Please check your email')
-    expect(page).to have_content('Incorrect email. Please re-enter your email address.')
-    expect(current_path).to eq('users/forgot_password')
+    expect(page).to have_content('Incorrect email address! Please tell us your email address')
+    expect(current_path).to eq('/users/forgot_password')
   end
 
 end
