@@ -135,4 +135,10 @@ feature 'links for user management on hompage' do
     expect(current_path).to eq '/sessions/new'
   end
 
+  scenario 'for sign-up' do
+    visit '/'
+    click_button 'Sign up'
+    expect(current_path).to eq '/users/new'
+  end
+
 end
