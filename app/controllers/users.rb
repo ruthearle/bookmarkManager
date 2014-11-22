@@ -26,6 +26,7 @@ post '/users/forgot_password' do
     user.password_token           = (1..64).map{('A'..'Z').to_a.sample}.join
     user.password_token_timestamp = Time.now
     user.save
+    send_password_token(user.email, user.password_token)
     flash[:notice] = "Please check your email"
     redirect('/')
   else
@@ -46,16 +47,21 @@ end
 
 post '/users/new_password' do
   user = User.first(password_token: params[:token])
-  if (Time.now  - user.password_token_timestamp) < 3600
+  if (Time.now  - user.password_token_timestamp) > 3600
+    flash[:errors] = ["This link has expired."]
+    redirect '/users/forgot_password'
+  else
     user.update(password: params[:password],
                 password_confirmation: params[:password_confirmation],
                 password_token: nil,
                 password_token_timestamp: nil)
-    flash[:notice] = 'Your password has been reset.'
-    redirect('/sessions/new')
-  else
-    flash[:errors] = ["This link has expired."]
-    redirect '/users/forgot_password'
+    if user.save
+      flash[:notice] = 'Your password has been reset.'
+      redirect('/sessions/new')
+    else
+      flash.now[:errors] = user.errors.full_messages
+      erb :'/users/new_password'
+    end
   end
 end
 

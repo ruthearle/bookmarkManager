@@ -17,7 +17,7 @@ class User
   attr_reader :password
   attr_writer :password_confirmation
 
-  validates_confirmation_of :password, :message => "Sorry, your passwords don't match"
+  validates_confirmation_of :password, :message => "Sorry, your passwords do not match"
   #validates_uniqueness_of :email  #This line is not necessary because we have
   #called for uniqueness on the email property. However, some ORM's require
   #this line, so check.
