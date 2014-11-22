@@ -3,14 +3,18 @@ body {
   color: #333;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   text-decoration: none;
   color: #b77843;
 }
 
-a.button {
+.button {
   display: inline-block; /* display inline but have dimensions */
-  width: 80px;
+  width: 110px;
   background-color: #82B743;
   border: 2px solid white;
   color: white; /*text colour*/
@@ -22,10 +26,11 @@ a.button {
   margin-right: 5px;
   margin-top: 10px;
   text-shadow: 0 0 2px rgba(0,0,0, 0.4); /*for readability*/
+  cursor: pointer; /* pointer looks like a hand */
 }
 
 /* a link that has both classes. Overrides the previous declaration*/
-a.button.highlighted {
+.button.highlighted {
   background-color: #b77843;
   width: 95px;
   height: 32px;
@@ -94,6 +99,10 @@ header {
     font-size: 12px;
   }
 
+#user-links {
+  display: inline-block;
+}
+
 .footer {
   display: flex;
   background-color: rgba(0,0,0,0.2);
@@ -126,13 +135,13 @@ html, body {
 .page-wrap {
   min-height: 100%;
   /* equal to footer height */
-  margin-bottom: -142px; 
+  margin-bottom: -142px;
 }
 .page-wrap:after {
   content: "";
   display: block;
 }
 .footer, .page-wrap:after {
-  height: 142px; 
+  height: 142px;
 }
 
