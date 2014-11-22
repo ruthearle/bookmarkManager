@@ -1,24 +1,12 @@
 body {
   background-image: url("/images/strange_bullseyes.png");
+  color: #333;
 }
 
-header {
-  height: 50px;
-  background-image: url("/images/dark_wall.png");
-  color: white;
-  display: flex; /* http://learnlayout.com/flexbox.html */
-  padding: 0 20px;
-}
-
-header a {
-  color: white;
+a {
   text-decoration: none;
+  color: #b77843;
 }
-
-/*#logo {*/
-  /*color: white;*/
-  /*font-size: 2.5em;*/
-/*}*/
 
 a.button {
   display: inline-block; /* display inline but have dimensions */
@@ -32,25 +20,51 @@ a.button {
   border-radius: 4px; /*rounded corners*/
   margin-left: 5px;
   margin-right: 5px;
+  margin-top: 10px;
   text-shadow: 0 0 2px rgba(0,0,0, 0.4); /*for readability*/
 }
 
 /* a link that has both classes. Overrides the previous declaration*/
 a.button.highlighted {
   background-color: #b77843;
+  width: 95px;
+  height: 32px;
+  margin-left: 45px;
 }
 
-header > * {
-  margin: auto 0;
-}
-header #logo {
-  display: flex;
+header {
+  height: 50px;
+  background-image: url("/images/dark_wall.png");
+  color: white;
+  display: flex; /* http://learnlayout.com/flexbox.html */
+  padding: 0 20px;
 }
 
-header #user-links {
-  flex: 1; /* http://learnlayout.com/flexbox.html */
-  -webkit-flex: 1;
-  text-align: right;
+  header a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+  }
+
+
+  header > * {
+    margin: auto 0;
+  }
+  header #logo {
+    display: flex;
+  }
+
+  header #user-links {
+    flex: 1; /* http://learnlayout.com/flexbox.html */
+    -webkit-flex: 1;
+    text-align: right;
+  }
+
+#links-container {
+  background-color: white;
+  margin: 40px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.4);
+  padding: 10px;
 }
 
 .link {
@@ -60,6 +74,9 @@ header #user-links {
   /* for left and right */
   margin: 10px inherit;
   padding: 15px 10px;
+  list-style-type: none;
+  margin-left: auto;
+  margin-right: 10px;
 }
 
 .link a.title {
@@ -67,12 +84,12 @@ header #user-links {
   letter-spacing: 1px;
 }
 
-.link .description {
-  margin: 10px inherit;
-}
+  .link .description {
+    margin: 10px inherit;
+  }
 
-.link .source {
-  /* http://learnlayout.com/float.html and the next 4 sections */
-  float: right;
-  font-size: 12px;
-}
+  .link .source {
+    /* http://learnlayout.com/float.html and the next 4 sections */
+    float: right;
+    font-size: 12px;
+  }
