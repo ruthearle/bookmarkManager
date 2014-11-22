@@ -3,7 +3,7 @@ body {
 }
 
 header {
-  height: 74px;
+  height: 50px;
   background-image: url("/images/dark_wall.png");
   color: white;
   display: flex; /* http://learnlayout.com/flexbox.html */
@@ -15,10 +15,10 @@ header a {
   text-decoration: none;
 }
 
-#logo {
-  color: white;
-  font-size: 2.5em;
-}
+/*#logo {*/
+  /*color: white;*/
+  /*font-size: 2.5em;*/
+/*}*/
 
 a.button {
   display: inline-block; /* display inline but have dimensions */
@@ -35,18 +35,22 @@ a.button {
   text-shadow: 0 0 2px rgba(0,0,0, 0.4); /*for readability*/
 }
 
-#welcome {
-  color: white;
-  margin: 1%;
-  padding-left: 34%;
-  font-size: 1.5em;
+/* a link that has both classes. Overrides the previous declaration*/
+a.button.highlighted {
+  background-color: #b77843;
 }
 
-#sign-out-button {
-  display: inline;
-  padding: 1.5%;
+header > * {
+  margin: auto 0;
+}
+header #logo {
+  display: flex;
 }
 
-#new-link {
-  display: inline;
+header #user-links {
+  flex: 1; /* http://learnlayout.com/flexbox.html */
+  -webkit-flex: 1;
+  text-align: right;
 }
+
+
