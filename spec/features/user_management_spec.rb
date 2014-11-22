@@ -69,11 +69,13 @@ end
 feature "Person forgets their password" do
 
   before(:each) do
+    time = Time.now
+    Timecop.freeze(time)
     User.create(:email                    => "rrearle@gmail.com",
                 :password                 => "test",
                 :password_confirmation    => "test",
                 :password_token           => "RAdoM",
-                :password_token_timestamp => Time.now)
+                :password_token_timestamp => time)
   end
 
   scenario "and requests to resest it using a correct email address" do
@@ -112,17 +114,8 @@ feature "Person forgets their password" do
     expect(current_path).to eq '/users/new_password'
   end
 
-
-   before(:each) do
-    User.create(:email                    => "test@test.com",
-                :password                 => "test",
-                :password_confirmation    => "test",
-                :password_token           => "RAdoM",
-                :password_token_timestamp => Time.new(2400))
-  end
-
-
-  scenario "and cannot reset with an expired password token link" do
+  scenario "and cannot reset with an password token link older than one hour" do
+    Timecop.travel(Time.now+60*65)
     visit 'users/reset_password/RAdoM'
     expect(page).to have_content('Sorry, there were the following problems with the form: This link has expired.')
     expect(current_path).to eq ('/users/forgot_password')
