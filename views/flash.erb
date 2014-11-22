@@ -4,10 +4,10 @@
   </div>
 <% end %>
 <% if flash[:errors] && !flash[:errors].empty? %>
-  Sorry, there were the following problems with the form:
+  <h5>Sorry, there were the following problems with the form:</h5>
   <ul id="errors">
     <% flash[:errors].each do |error| %>
       <li><%= error %></li>
-    <%end%>
+    <% end %>
   </ul>
 <%end%>
