@@ -1,3 +1,7 @@
+get '/links/new'do
+  erb :"/links/new"
+end
+
 post '/links' do
   url         = params["url"]
   title       = params["title"]
