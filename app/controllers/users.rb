@@ -60,7 +60,6 @@ post '/users/new_password' do
       redirect('/sessions/new')
     else
       flash.now[:errors] = user.errors.full_messages
-      erb :'/users/new_password'
     end
   end
 end
