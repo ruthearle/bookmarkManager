@@ -7,10 +7,12 @@
   <title>Bookmark manager</title>
 </head>
   <body>
-
   <%= partial :header %>
   <%= partial :flash %>
-  <%= yield %>
+
+  <div class="page-wrap">
+    <%= yield %>
+  </div>
   <%= partial :footer%>
 
   </body>
