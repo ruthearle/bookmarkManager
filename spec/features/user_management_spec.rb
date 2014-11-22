@@ -87,6 +87,7 @@ feature "Person forgets their password" do
     visit 'users/forgot_password'
     fill_in 'email', :with => "pass@test.com"
     click_on 'Forgot my password'
+    allow_any_instance_of(Sinatra::Application).to receive(:send_password_token).and_return true
     expect(page).not_to have_content('Please check your email')
     expect(page).to have_content('Incorrect email address!')
     expect(current_path).to eq('/users/forgot_password')
