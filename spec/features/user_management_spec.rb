@@ -131,13 +131,13 @@ feature 'links for user management on hompage' do
 
   scenario 'for sign-in' do
     visit '/'
-    click_button 'Sign in'
+    click_link 'Sign in'
     expect(current_path).to eq '/sessions/new'
   end
 
   scenario 'for sign-up' do
     visit '/'
-    click_button 'Sign up'
+    click_link 'Sign up'
     expect(current_path).to eq '/users/new'
   end
 
