@@ -121,7 +121,18 @@ feature "Person forgets their password" do
     expect(current_path).to eq ('/users/forgot_password')
   end
 
+  after do
+    Timecop.return
+  end
+
 end
 
-#scenario password_confirmation incorrect
+feature 'links for user management on hompage' do
 
+  scenario 'for sign-in' do
+    visit '/'
+    click_button 'Sign in'
+    expect(current_path).to eq '/sessions/new'
+  end
+
+end
