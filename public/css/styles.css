@@ -23,7 +23,7 @@ a {
   text-align: center;
   border-radius: 4px; /*rounded corners*/
   margin-left: 5px;
-  margin-right: 5px;
+  margin-right: 15px;
   margin-top: 10px;
   text-shadow: 0 0 2px rgba(0,0,0, 0.4); /*for readability*/
   cursor: pointer; /* pointer looks like a hand */
@@ -57,6 +57,7 @@ header {
     color: white;
     text-decoration: none;
     font-size: 1.5em;
+    margin-left: 15px;
   }
 
 
@@ -123,6 +124,7 @@ header {
   footer img {
     /* http://stackoverflow.com/questions/10658475/3px-extra-height-on-a-div-with-an-image-inside-it */
     vertical-align: top;
+    margin-left: 2.1rem;
   }
 
   footer #technologies {
@@ -156,10 +158,13 @@ html, body {
 .flash {
   text-align: center;
   margin: 5px;
+  margin-left: inherit;
+  margin-right: 2.1rem;
   padding: 5px;
   border-radius: 4px;
   box-shadow: 0 0 3px rgba(0,0,0,0.4);
   color: white;
+  list-style-type: none;
 }
 
   .flash.notice{
