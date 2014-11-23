@@ -3,6 +3,7 @@
   <div class='description'>
     <%= link.description%>
   </div>
+  <span class="tags"><%= link.tags.map { |tag| "<a href='/tags/#{tag.text}'>\##{tag.text}</a>"}.join(" ") %></span>
   <span class='source'>
     added yesterday by 
     <a href="#">evgeny@makersacademy.com</a>
