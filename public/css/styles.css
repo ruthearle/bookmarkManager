@@ -29,6 +29,14 @@ a {
   cursor: pointer; /* pointer looks like a hand */
 }
 
+.button#forgot {
+  width: 145px;
+}
+
+.button#reset {
+  width: 150px;
+}
+
 /* a link that has both classes. Overrides the previous declaration*/
 .button.highlighted {
   background-color: #b77843;
