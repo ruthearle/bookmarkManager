@@ -52,8 +52,9 @@ $ rake auto_upgrade
 ```
 
 Create an environment variable pointing to your local database and
-MailGun API key and smtp login (you will need to grab your own by
-signing up for an account at [MailGun](http://mailgun.com)):
+MailGun API key and smtp login (you will need to grab your key and login by
+signing up for an account at [MailGun](http://mailgun.com) and replace
+the fake info after the '='):
 ```shell
 $ export DATABASE_URL=postgres://localhost/bookmark_manager_test
 $ export MAILGUN_API_KEY=key-111111111111111111111111
