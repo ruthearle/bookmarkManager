@@ -9,7 +9,6 @@ gem 'bcrypt'
 gem 'rack-flash3'
 gem 'sinatra-partial'
 gem 'mailgun-ruby'
-gem 'pg'
 
 group :development, :test do
 	gem 'cucumber'
@@ -19,4 +18,8 @@ group :development, :test do
   gem "rspec"
   gem 'launchy'
   gem 'timecop'
+end
+
+group :production do
+  gem 'pg'
 end
