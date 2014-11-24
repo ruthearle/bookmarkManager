@@ -5,7 +5,6 @@ require 'rack-flash'
 require 'sinatra/partial'
 require 'mailgun'
 require 'rest_client'
-require 'timecop'
 
 require_relative 'models/link'
 require_relative 'models/tag'
