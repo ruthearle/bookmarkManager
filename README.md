@@ -4,7 +4,7 @@
 Bookmark Manager
 ================
 
-![alt text](bookmark_manager_screenshot.png)
+![alt text](/public/images/bookmark_manager_screenshot.png)
 
 
 This week's project is a bookmark manager. The goal is to learn about integration testing with Capybara, relational databases, and security considerations.
