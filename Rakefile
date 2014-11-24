@@ -1,6 +1,6 @@
 require 'data_mapper'
 require  'dm-migrations'
-require './app/data_mapper_setup'
+require './data_mapper_setup'
 
 task :auto_upgrade do
   # non-destructive change to DB
