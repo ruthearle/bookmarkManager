@@ -14,12 +14,16 @@ You requested to reset your password.
 
 Please use the following link:
 
-http://localhost:9292/users/reset_password/#{token}
-(this link will expire in one (1) hour)
+https://ruthsbmmanager.herokuapp.com/users/reset_password/#{token}
 
 
 All the best,
 
-Bookmark Manager Team"
+Bookmark Manager Team
+
+Please note: the link will expire in one hour.
+  "
+
+
 
 end
