@@ -4,7 +4,7 @@
 Bookmark Manager
 ================
 
-![alt text](https://www.evernote.com/shard/s31/sh/a60389cd-e01c-4b36-9182-1f4a5164cca9/0e0490e2d84059d947e3a6dd904bfe94/deep/0/Bookmark-manager.png)
+![alt text](bookmark_manager_screenshot.png)
 
 
 This week's project is a bookmark manager. The goal is to learn about integration testing with Capybara, relational databases, and security considerations.
