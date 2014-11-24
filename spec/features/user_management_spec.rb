@@ -81,14 +81,14 @@ feature "Person forgets their password" do
   scenario "and requests to resest it using a correct email address" do
     visit 'users/forgot_password'
     fill_in 'email', :with => "rrearle@gmail.com"
-    click_on 'Forgot my password'
+    click_on 'Forgot password'
     expect(page).to have_content('Please check your email')
   end
 
   scenario "and requests to resest it using an incorrect email address" do
     visit 'users/forgot_password'
     fill_in 'email', :with => "pass@test.com"
-    click_on 'Forgot my password'
+    click_on 'Forgot password'
     allow_any_instance_of(Sinatra::Application).to receive(:send_password_token).and_return true
     expect(page).not_to have_content('Please check your email')
     expect(page).to have_content('Incorrect email address!')
@@ -100,7 +100,7 @@ feature "Person forgets their password" do
     expect(page).to have_content('Please enter a new password for rrearle@gmail.com')
     fill_in 'password', with: "test"
     fill_in 'password_confirmation', with: 'test'
-    click_on 'Reset my password'
+    click_on 'Reset password'
     expect(page).to have_content 'Your password has been reset. Please sign in'
   end
 
@@ -108,14 +108,14 @@ feature "Person forgets their password" do
     visit 'users/reset_password/RAdoM'
     fill_in 'password', with: "test"
     fill_in 'password_confirmation', with: 'best'
-    click_on 'Reset my password'
+    click_on 'Reset password'
     expect(page).not_to have_content 'Your password has been reset. Please sign in'
     expect(page).to have_content 'Sorry, your passwords do not match'
     expect(current_path).to eq '/users/new_password'
   end
 
   scenario "and cannot reset with an password token link older than one hour" do
-    Timecop.travel(Time.now+60*65)
+    Timecop.travel(Time.now+60*60)
     visit 'users/reset_password/RAdoM'
     expect(page).to have_content('Sorry, there were the following problems with the form: This link has expired.')
     expect(current_path).to eq ('/users/forgot_password')
