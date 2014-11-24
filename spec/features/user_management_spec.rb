@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'timecop'
 require_relative '../helpers/session_helpers'
 
 include SessionHelpers
@@ -117,7 +118,7 @@ feature "Person forgets their password" do
   scenario "and cannot reset with an password token link older than one hour" do
     Timecop.travel(Time.now+60*60)
     visit 'users/reset_password/RAdoM'
-    expect(page).to have_content('Sorry, there were the following problems with the form: This link has expired.')
+    expect(page).to have_content('This link has expired.')
     expect(current_path).to eq ('/users/forgot_password')
   end
 
