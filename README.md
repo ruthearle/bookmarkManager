@@ -1,4 +1,4 @@
-| [*Makers Academy*](http://www.makersacademy.com) | Week 6 - Project|
+| [*Makers Academy*](http://www.makersacademy.com) | Week 6 |
 | ---------------- | ------ |
 
 Bookmark Manager
