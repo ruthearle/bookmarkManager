@@ -9,6 +9,7 @@ gem 'bcrypt'
 gem 'rack-flash3'
 gem 'sinatra-partial'
 gem 'mailgun-ruby'
+gem 'newrelic_rpm'
 
 group :development, :test do
 	gem 'cucumber'
